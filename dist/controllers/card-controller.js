@@ -49,23 +49,6 @@ const updateCardInColumn = async (req, res) => {
     await board.save();
     res.json(card);
 };
-// const deleteCardFromColumn = async (
-//   boardId: string,
-//   columnId: string,
-//   cardId: string
-// ) => {
-//   const board = await Board.findById(boardId);
-//   if (!board) {
-//     throw new Error(`Board with id ${boardId} not found`);
-//   }
-//   const column = board.columns.id(columnId);
-//   if (!column) {
-//     throw new Error(`Column with id ${columnId} not found`);
-//   }
-//   column.cards = column.cards.filter((card) => card._id.toString() !== cardId);
-//   await board.save();
-//   return column;
-// };
 const deleteCardFromColumn = async (req, res) => {
     const { boardId, columnId, cardId } = req.params;
     const board = await Board_1.default.findById(boardId);

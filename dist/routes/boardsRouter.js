@@ -1,58 +1,8 @@
 "use strict";
-// import { Router, Request, Response } from 'express';
-// import Board from '../models/board';
-// import Column from '../models/column';
-// import Card from '../models/card';
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// const router = Router();
-// router.post('/boards', async (req: Request, res: Response) => {
-//   const { name } = req.body;
-//   try {
-//     const newBoard = new Board({ name, columns: [] });
-//     await newBoard.save();
-//     res.status(201).json(newBoard);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error creating board', error });
-//   }
-// });
-// router.get('/boards', async (req: Request, res: Response) => {
-//   try {
-//     const boards = await Board.find().populate('columns');
-//     res.json(boards);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error fetching boards', error });
-//   }
-// });
-// router.post('/boards/:boardId/columns', async (req: Request, res: Response) => {
-//   const { title } = req.body;
-//   try {
-//     const board = await Board.findById(req.params.boardId);
-//     const newColumn = new Column({ title, cards: [] });
-//     await newColumn.save();
-//     board?.columns.push(newColumn);
-//     await board?.save();
-//     res.status(201).json(newColumn);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error adding column', error });
-//   }
-// });
-// router.post('/columns/:columnId/cards', async (req: Request, res: Response) => {
-//   const { title, description } = req.body;
-//   try {
-//     const column = await Column.findById(req.params.columnId);
-//     const newCard = new Card({ title, description });
-//     await newCard.save();
-//     column?.cards.push(newCard);
-//     await column?.save();
-//     res.status(201).json(newCard);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error adding card', error });
-//   }
-// });
-// export default router;
 const express_1 = __importDefault(require("express"));
 const index_1 = require("../middlewares/index");
 const board_controller_1 = __importDefault(require("../controllers/board-controller"));
@@ -68,10 +18,6 @@ boardsRouter.post('/', index_1.isEmptyBody, boardAddValidate, board_controller_1
 boardsRouter.put('/:id', index_1.isValidId, index_1.isEmptyBody, boardAddValidate, board_controller_1.default.updateBoardById);
 boardsRouter.delete('/:id', index_1.isValidId, board_controller_1.default.deleteBoardByID);
 boardsRouter.post('/:boardId/columns/:columnId/cards', index_1.isEmptyBody, cardAddValidate, card_controller_1.default.addCardToColumn);
-boardsRouter.put('/:boardId/columns/:columnId/cards/:cardId', 
-// isValidId,
-index_1.isEmptyBody, cardAddValidate, card_controller_1.default.updateCardInColumn);
-boardsRouter.delete('/:boardId/columns/:columnId/cards/:cardId', 
-// isValidId,
-card_controller_1.default.deleteCardFromColumn);
+boardsRouter.put('/:boardId/columns/:columnId/cards/:cardId', index_1.isEmptyBody, cardAddValidate, card_controller_1.default.updateCardInColumn);
+boardsRouter.delete('/:boardId/columns/:columnId/cards/:cardId', card_controller_1.default.deleteCardFromColumn);
 exports.default = boardsRouter;
