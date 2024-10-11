@@ -56,13 +56,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const index_1 = require("../middlewares/index");
 const board_controller_1 = __importDefault(require("../controllers/board-controller"));
+const card_controller_1 = __importDefault(require("../controllers/card-controller"));
 const validateBody_1 = __importDefault(require("../decorators/validateBody"));
 const models_1 = require("../models");
 const boardAddValidate = (0, validateBody_1.default)(models_1.boardJoiSchema);
+const cardAddValidate = (0, validateBody_1.default)(models_1.cardJoiSchema);
 const boardsRouter = express_1.default.Router();
 boardsRouter.get('/', board_controller_1.default.getAll);
 boardsRouter.get('/:id', index_1.isValidId, board_controller_1.default.getBoardById);
 boardsRouter.post('/', index_1.isEmptyBody, boardAddValidate, board_controller_1.default.addBoard);
 boardsRouter.put('/:id', index_1.isValidId, index_1.isEmptyBody, boardAddValidate, board_controller_1.default.updateBoardById);
 boardsRouter.delete('/:id', index_1.isValidId, board_controller_1.default.deleteBoardByID);
+boardsRouter.post('/:boardId/columns/:columnId/cards', index_1.isEmptyBody, cardAddValidate, card_controller_1.default.addCardToColumn);
+boardsRouter.put('/:boardId/columns/:columnId/cards/:cardId', 
+// isValidId,
+index_1.isEmptyBody, cardAddValidate, card_controller_1.default.updateCardInColumn);
+boardsRouter.delete('/:boardId/columns/:columnId/cards/:cardId', 
+// isValidId,
+card_controller_1.default.deleteCardFromColumn);
 exports.default = boardsRouter;

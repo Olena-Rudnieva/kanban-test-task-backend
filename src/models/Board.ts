@@ -2,41 +2,7 @@ import { Schema, model } from 'mongoose';
 import { handleSaveError, runValidatorsAtUpdate } from './hooks';
 import Joi from 'joi';
 
-// export const boardSchema = new Schema(
-//   {
-//     name: {
-//       type: String,
-//       required: [true, 'Set name for board'],
-//     },
-//     columns: [
-//       {
-//         title: {
-//           type: String,
-//           enum: ['To do', 'In Progress', 'Done'],
-//           required: [true, 'Set title for column'],
-//         },
-//         cards: [
-//           {
-//             title: {
-//               type: String,
-//               //   required: [true, 'Set title for card'],
-//             },
-//             description: {
-//               type: String,
-//               //   required: [true, 'Set description for card'],
-//             },
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   { versionKey: false, timestamps: true }
-// );
-
 const cardSchema = new Schema({
-  //   _id: {
-  //     type: String,
-  //   },
   title: {
     type: String,
   },
@@ -46,12 +12,9 @@ const cardSchema = new Schema({
 });
 
 const columnSchema = new Schema({
-  //   _id: {
-  //     type: String,
-  //   },
   title: {
     type: String,
-    enum: ['To do', 'In Progress', 'Done'],
+    enum: ['To Do', 'In Progress', 'Done'],
     required: [true, 'Set title for column'],
   },
   cards: {
@@ -61,9 +24,6 @@ const columnSchema = new Schema({
 
 const boardSchema = new Schema(
   {
-    // _id: {
-    //   type: String,
-    // },
     name: {
       type: String,
       required: [true, 'Set name for board'],
@@ -75,17 +35,7 @@ const boardSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-// export const boardAddSchema = Joi.object({
-//   name: Joi.string().required().messages({
-//     'any.required': `missing required "name" field`,
-//   }),
-//   phone: Joi.string().required().messages({
-//     'any.required': `missing required "phone" field`,
-//   }),
-//   message: Joi.string(),
-// });
-
-const cardJoiSchema = Joi.object({
+export const cardJoiSchema = Joi.object({
   _id: Joi.string().optional(),
   title: Joi.string().optional().messages({
     'string.base': 'Title must be a string',
@@ -95,14 +45,14 @@ const cardJoiSchema = Joi.object({
   }),
 });
 
-const columnJoiSchema = Joi.object({
+export const columnJoiSchema = Joi.object({
   _id: Joi.string().optional(),
   title: Joi.string()
-    .valid('To do', 'In Progress', 'Done')
+    .valid('To Do', 'In Progress', 'Done')
     .required()
     .messages({
       'any.required': 'Set title for column',
-      'any.only': 'Title must be one of: To do, In Progress, Done',
+      'any.only': 'Title must be one of: To Do, In Progress, Done',
     }),
   cards: Joi.array().items(cardJoiSchema).optional(),
 });
