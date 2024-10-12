@@ -1,8 +1,9 @@
 import 'dotenv/config';
 import HttpError from '../helpers/HttpError.js';
 import ctrlWrapper from '../decorators/ctrlWrapper.js';
-import Board from '../models/Board.js';
+
 import { Request, Response, NextFunction } from 'express';
+import { Board } from '../models/Board.js';
 
 const getAll = async (req: Request, res: Response) => {
   const result = await Board.find();

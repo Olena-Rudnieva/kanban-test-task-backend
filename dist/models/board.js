@@ -61,5 +61,4 @@ export const boardJoiSchema = Joi.object({
 boardSchema.post('save', handleSaveError);
 boardSchema.pre('findOneAndUpdate', runValidatorsAtUpdate);
 boardSchema.post('findOneAndUpdate', handleSaveError);
-const Board = model('board', boardSchema);
-export default Board;
+export const Board = model('board', boardSchema);

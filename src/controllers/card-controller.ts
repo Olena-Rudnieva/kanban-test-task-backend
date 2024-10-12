@@ -1,9 +1,10 @@
 import 'dotenv/config';
 import HttpError from '../helpers/HttpError.js';
 import ctrlWrapper from '../decorators/ctrlWrapper.js';
-import Board from '../models/Board.js';
+
 import { Router, Request, Response, NextFunction } from 'express';
 import { log } from 'console';
+import { Board } from '../models/Board.js';
 
 const addCardToColumn = async (req: Request, res: Response) => {
   const { boardId, columnId } = req.params;

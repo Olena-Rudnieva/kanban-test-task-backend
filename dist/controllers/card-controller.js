@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import HttpError from '../helpers/HttpError.js';
 import ctrlWrapper from '../decorators/ctrlWrapper.js';
-import Board from '../models/Board.js';
+import { Board } from '../models/Board.js';
 const addCardToColumn = async (req, res) => {
     const { boardId, columnId } = req.params;
     const { title, description } = req.body;
