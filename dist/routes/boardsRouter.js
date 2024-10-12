@@ -3,7 +3,7 @@ import { isEmptyBody, isValidId } from '../middlewares/index.js';
 import boardController from '../controllers/board-controller.js';
 import cardController from '../controllers/card-controller.js';
 import validateBody from '../decorators/validateBody.js';
-import { boardJoiSchema, cardJoiSchema } from '../models/Board.js';
+import { boardJoiSchema, cardJoiSchema } from '../models/index.js';
 const boardAddValidate = validateBody(boardJoiSchema);
 const cardAddValidate = validateBody(cardJoiSchema);
 const boardsRouter = express.Router();
