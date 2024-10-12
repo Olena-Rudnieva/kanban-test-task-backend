@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const ctrlWrapper = (ctrl) => {
     const func = async (req, res, next) => {
         try {
@@ -11,4 +9,4 @@ const ctrlWrapper = (ctrl) => {
     };
     return func;
 };
-exports.default = ctrlWrapper;
+export default ctrlWrapper;

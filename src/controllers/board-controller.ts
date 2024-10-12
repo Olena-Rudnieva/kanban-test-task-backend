@@ -1,7 +1,7 @@
 import 'dotenv/config';
-import HttpError from '../helpers/HttpError';
-import ctrlWrapper from '../decorators/ctrlWrapper';
-import Board from '../models/Board';
+import HttpError from '../helpers/HttpError.js';
+import ctrlWrapper from '../decorators/ctrlWrapper.js';
+import Board from '../models/Board.js';
 import { Request, Response, NextFunction } from 'express';
 
 const getAll = async (req: Request, res: Response) => {

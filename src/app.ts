@@ -3,7 +3,7 @@ import cors from 'cors';
 import logger from 'morgan';
 import { Request, Response, NextFunction } from 'express';
 import 'dotenv/config';
-import boardsRouter from './routes/boardsRouter';
+import boardsRouter from './routes/boardsRouter.js';
 
 const app = express();
 

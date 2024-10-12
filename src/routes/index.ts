@@ -1,1 +1,1 @@
-export * from './boardsRouter';
+export * from './boardsRouter.js';

@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { handleSaveError, runValidatorsAtUpdate } from './hooks';
+import { handleSaveError, runValidatorsAtUpdate } from './hooks/index.js';
 import Joi from 'joi';
 
 const cardSchema = new Schema({

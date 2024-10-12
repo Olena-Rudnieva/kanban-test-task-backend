@@ -1,2 +1,2 @@
-export * from './Board';
-export * from './hooks';
+export * from './Board.js';
+export * from './hooks/index.js';

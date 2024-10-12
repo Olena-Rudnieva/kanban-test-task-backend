@@ -1,2 +1,2 @@
-export * from './board-controller';
-export * from './card-controller';
+export * from './board-controller.js';
+export * from './card-controller.js';

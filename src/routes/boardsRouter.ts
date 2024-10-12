@@ -1,10 +1,10 @@
 import express from 'express';
-import { isEmptyBody, isValidId } from '../middlewares/index';
-import boardController from '../controllers/board-controller';
-import cardController from '../controllers/card-controller';
+import { isEmptyBody, isValidId } from '../middlewares/index.js';
+import boardController from '../controllers/board-controller.js';
+import cardController from '../controllers/card-controller.js';
 
-import validateBody from '../decorators/validateBody';
-import { boardJoiSchema, cardJoiSchema } from '../models';
+import validateBody from '../decorators/validateBody.js';
+import { boardJoiSchema, cardJoiSchema } from '../models/Board.js';
 
 const boardAddValidate = validateBody(boardJoiSchema);
 const cardAddValidate = validateBody(cardJoiSchema);
