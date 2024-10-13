@@ -10,16 +10,7 @@ const app = express();
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
 app.use(logger(formatsLogger));
-// app.use(cors());
-app.use(
-  cors({
-    origin: '*',
-    credentials: true,
-    methods: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
-    allowedHeaders:
-      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 

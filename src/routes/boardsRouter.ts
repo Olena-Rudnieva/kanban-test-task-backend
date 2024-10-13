@@ -27,6 +27,13 @@ boardsRouter.put(
 
 boardsRouter.delete('/:id', isValidId, boardController.deleteBoardByID);
 
+boardsRouter.put(
+  '/:id/columns',
+  isValidId,
+  isEmptyBody,
+  boardController.updateColumns
+);
+
 boardsRouter.post(
   '/:boardId/columns/:columnId/cards',
   isEmptyBody,

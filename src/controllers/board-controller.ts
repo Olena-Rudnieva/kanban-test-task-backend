@@ -54,10 +54,24 @@ const deleteBoardByID = async (
   });
 };
 
+const updateColumns = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { columns } = req.body;
+
+  const board = await Board.findByIdAndUpdate(id, { columns });
+
+  if (!board) {
+    throw HttpError(404, `Board with id ${id} not found`);
+  }
+
+  res.json(board);
+};
+
 export default {
   getAll: ctrlWrapper(getAll),
   getBoardById: ctrlWrapper(getBoardById),
   addBoard: ctrlWrapper(addBoard),
   updateBoardById: ctrlWrapper(updateBoardById),
   deleteBoardByID: ctrlWrapper(deleteBoardByID),
+  updateColumns: ctrlWrapper(updateColumns),
 };

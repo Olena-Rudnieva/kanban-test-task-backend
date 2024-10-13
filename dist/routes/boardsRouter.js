@@ -12,6 +12,7 @@ boardsRouter.get('/:id', isValidId, boardController.getBoardById);
 boardsRouter.post('/', isEmptyBody, boardAddValidate, boardController.addBoard);
 boardsRouter.put('/:id', isValidId, isEmptyBody, boardAddValidate, boardController.updateBoardById);
 boardsRouter.delete('/:id', isValidId, boardController.deleteBoardByID);
+boardsRouter.put('/:id/columns', isValidId, isEmptyBody, boardController.updateColumns);
 boardsRouter.post('/:boardId/columns/:columnId/cards', isEmptyBody, cardAddValidate, cardController.addCardToColumn);
 boardsRouter.put('/:boardId/columns/:columnId/cards/:cardId', isEmptyBody, cardAddValidate, cardController.updateCardInColumn);
 boardsRouter.delete('/:boardId/columns/:columnId/cards/:cardId', cardController.deleteCardFromColumn);
